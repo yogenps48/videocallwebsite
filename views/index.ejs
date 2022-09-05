@@ -420,7 +420,7 @@
         }
         let choice=confirm("Join the Call?");
         if(!choice){
-          window.location.href = 'http://localhost:'+port+'/';
+          window.location.href = 'https://damp-falls-65525.herokuapp.com/';
           return;
         }
         // Record the username being called for future reference
@@ -618,11 +618,11 @@
     });
 
     function logout(){
-      window.location.href="http://localhost:"+port+"/logout";
+      window.location.href="https://damp-falls-65525.herokuapp.com/logout";
     }
 
     function copyLinkToClipboard(){
-      navigator.clipboard.writeText("localhost:"+port+"/" + myUsername);
+      navigator.clipboard.writeText("https://damp-falls-65525.herokuapp.com/" + myUsername);
     }
     
     function whenVideoStarts(){
@@ -643,7 +643,7 @@
       videoCheck.disabled = true;
     }
     function clickedNewMeet(){
-      document.getElementById('search-box').value = "localhost:"+port+"/" + myUsername;
+      document.getElementById('search-box').value = "https://damp-falls-65525.herokuapp.com/" + myUsername;
       copyLinkToClipboard();
       copydiv.style.display="block";
       showOnVideoCall.style.display="block";
