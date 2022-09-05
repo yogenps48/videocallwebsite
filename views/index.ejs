@@ -149,7 +149,7 @@
 
       var serverUrl;
       
-      serverUrl = "https://damp-falls-65525.herokuapp.com/";
+      serverUrl = "ws://" + myHostname + ":3000";
 
       log(`Connecting to server: ${serverUrl}`);
       connection = new WebSocket(serverUrl, "json");
@@ -184,6 +184,7 @@
             break;
 
           case "video-answer":  // Callee has answered our offer
+            whenVideoStarts();
             handleVideoAnswerMsg(msg);
             break;
 
@@ -414,7 +415,7 @@
         }
         let choice=confirm("Join the Call?");
         if(!choice){
-          window.location.href = 'https://damp-falls-65525.herokuapp.com/';
+          window.location.href = 'http://localhost:3000/';
           return;
         }
         // Record the username being called for future reference
@@ -612,11 +613,11 @@
     });
 
     function logout(){
-      window.location.href="https://damp-falls-65525.herokuapp.com/logout";
+      window.location.href="http://localhost:3000/logout";
     }
 
     function copyLinkToClipboard(){
-      navigator.clipboard.writeText("https://damp-falls-65525.herokuapp.com/" + myUsername);
+      navigator.clipboard.writeText("http://localhost:3000/" + myUsername);
     }
     
     function whenVideoStarts(){
@@ -637,7 +638,7 @@
       videoCheck.disabled = true;
     }
     function clickedNewMeet(){
-      document.getElementById('search-box').value = "https://damp-falls-65525.herokuapp.com/" + myUsername;
+      document.getElementById('search-box').value = "http://localhost:3000/" + myUsername;
       copyLinkToClipboard();
       copydiv.style.display="block";
       showOnVideoCall.style.display="block";
