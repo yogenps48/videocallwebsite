@@ -12,7 +12,7 @@ const session = require("express-session");
 const passport = require("passport");
 const bcrypt = require("bcrypt");
 const findOrCreate = require("mongoose-findorcreate");
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const GoogleStrategy = require("passport-google-oauth2").Strategy;
 let express = require("express");
 var reqId = "";
 let port=process.env.PORT;
@@ -67,9 +67,10 @@ passport.use(
     {
       clientID: process.env.client_id,
       clientSecret: process.env.client_secret,
-      callbackURL: "https://damp-falls-65525.herokuapp.com/auth/google/callback",
+      callbackURL: "http://localhost:3000/auth/google/callback",
+      passReqToCallback   : true
     },
-    function (accessToken, refreshToken, profile, cb) {
+    function (request,accessToken, refreshToken, profile, cb) {
       //console.log(profile);
       User.findOrCreate({ googleId: profile.id, googleName: profile.displayName }, function (err, user) {
         return cb(err, user);
