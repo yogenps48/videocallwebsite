@@ -67,7 +67,7 @@ passport.use(
     {
       clientID: process.env.client_id,
       clientSecret: process.env.client_secret,
-      callbackURL: "http://localhost:3000/auth/google/callback",
+      callbackURL: "https://damp-falls-65525.herokuapp.com/auth/google/callback",
     },
     function (accessToken, refreshToken, profile, cb) {
       //console.log(profile);
